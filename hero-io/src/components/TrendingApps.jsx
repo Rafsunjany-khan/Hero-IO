@@ -20,10 +20,11 @@ const TreadingApps = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {apps.map((app) => (
-            <div
-              key={app.id}
+            <div key={app.id}
               className="bg-white shadow rounded-2xl p-4 text-left hover:shadow-lg transition">
+
               <img src={app.image} className="w-full h-40 object-cover rounded-lg mb-4" />
+
               <h3 className="font-semibold text-lg mb-2">{app.title}</h3>
 
               <div className="flex justify-between items-center text-sm text-gray-600 gap-2">
