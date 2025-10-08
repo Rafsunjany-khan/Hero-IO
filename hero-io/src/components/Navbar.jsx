@@ -15,8 +15,7 @@ const Navbar  = () => {
 
      <div>
         <button className="flex items-center space-x-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
-        <img
-          src=""  className="w-5 h-5 mr-2"/>
+        <img src="/assets/github.png"  className="w-5 h-5 mr-2"/>
         Contribute</button>
 
      </div>
