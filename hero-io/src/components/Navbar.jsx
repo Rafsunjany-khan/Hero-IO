@@ -11,27 +11,17 @@ const Navbar = () => {
 
       <ul className="hidden md:flex space-x-8 text-gray-700 font-bold items-center">
         <li>
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) => (isActive ? "text-purple-600" : "")}
-          >
+          <NavLink to="/" end className={({ isActive }) => (isActive ? "text-purple-600" : "")}>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/apps"
-            className={({ isActive }) => (isActive ? "text-purple-600" : "")}
-          >
+          <NavLink to="/apps" className={({ isActive }) => (isActive ? "text-purple-600" : "")}>
             Apps
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/installation"
-            className={({ isActive }) => (isActive ? "text-purple-600" : "")}
-          >
+          <NavLink to="/installation" className={({ isActive }) => (isActive ? "text-purple-600" : "")}>
             Installation
           </NavLink>
         </li>

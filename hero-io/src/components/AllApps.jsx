@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import AppsNotFound from "../pages/AppsNotFound";
+
 const AllApps = () => {
   const [apps, setApps] = useState([]);
   const [search, setSearch] = useState("");
@@ -49,7 +51,7 @@ const AllApps = () => {
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-500 mt-6">No App Found</p>
+        <AppsNotFound />
       )}
     </div>
   );
