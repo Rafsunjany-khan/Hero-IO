@@ -1,21 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import Navbar from "./components/Navbar";
-import Banner from "./components/Banner";
-import Trust from "./components/Trust";
-import TrendingApps from "./components/TrendingApps";
-import Footer from "./components/Footer";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Apps from "./pages/Apps";
+import Installation from "./pages/Installation";
 
 function App() {
   return (
-    <div>
-    <Navbar />
-    <Banner />
-    <Trust />
-    <TrendingApps />
-    <Footer />
-
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/apps" element={<Apps />} />
+      <Route path="/installation" element={<Installation />} />
+    </Routes>
   );
 }
 
