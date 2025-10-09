@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const TreadingApps = () => {
   const [apps, setApps] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/data/appsData.json")
@@ -41,7 +43,8 @@ const TreadingApps = () => {
           ))}
         </div>
 
-        <button className="mt-10 bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">
+        <button className="mt-10 bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition"
+          onClick={() => navigate("/apps")}>
           Show All
         </button>
       </div>
