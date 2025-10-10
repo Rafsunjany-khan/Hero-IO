@@ -29,16 +29,26 @@ const AppDetails = () => {
   }, [id]);
 
         const handleInstall = () => {
-                setInstalled(true);
-                toast.success(`${app.title} Installed Successfully!`, {
-                  position: "top-right",
-                  autoClose: 3000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                });
-              };
+        const installedApps = JSON.parse(localStorage.getItem("installedApps")) || [];
+        const isAlreadyInstalled = installedApps.some((a) => a.id === app.id);
+
+          if (!isAlreadyInstalled) {
+            installedApps.push(app);
+            localStorage.setItem("installedApps", JSON.stringify(installedApps));
+          }
+
+          setInstalled(true);
+
+          toast.success(`${app.title} Installed Successfully!`, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+        };
+
 
           if (loading) {
           return <div className="text-center py-20">Loading...</div>;
