@@ -74,40 +74,38 @@ const Installation = () => {
           <div className="space-y-6">
             {sortedApps.map((app) => (
               <div
-                key={app.id}
-                className="bg-white shadow rounded-2xl p-4 flex items-center justify-between hover:shadow-lg transition"
-              >
-                {/* Image + Info */}
-                <div className="flex items-center gap-4">
-                  <img
-                    src={app.image}
-                    alt={app.title}
-                    className="w-28 h-28 object-cover rounded-lg"
-                  />
-                  <div>
-                    <h3 className="font-semibold text-lg">{app.title}</h3>
-                    <div className="flex items-center gap-4 text-sm text-gray-600 mt-1">
-                      <span className="flex items-center gap-2">
-                        <img src="/assets/icon-downloads.png" className="h-3" />{" "}
-                        {app.downloads.toLocaleString()}
-                      </span>
-                      <span className="flex items-center gap-2">
-                        <img src="/assets/icon-ratings.png" className="h-3" />{" "}
-                        {app.ratingAvg.toFixed(1)}
-                      </span>
-                      <span> {app.size} MB</span>
-                    </div>
+              key={app.id}
+              className="bg-white shadow rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between hover:shadow-lg transition">
+
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full sm:w-auto">
+                <img
+                  src={app.image}
+                  alt={app.title}
+                  className="w-full sm:w-28 h-28 object-cover rounded-lg"
+                />
+                <div className="flex flex-col gap-2 mt-2 sm:mt-0">
+                  <h3 className="font-semibold text-lg">{app.title}</h3>
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mt-1">
+                    <span className="flex items-center gap-2">
+                      <img src="/assets/icon-downloads.png" className="h-3" />{" "}
+                      {app.downloads.toLocaleString()}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <img src="/assets/icon-ratings.png" className="h-3" />{" "}
+                      {app.ratingAvg.toFixed(1)}
+                    </span>
+                    <span>{app.size} MB</span>
                   </div>
                 </div>
-
-
-                <button
-                  className="bg-green-500 text-white px-4 py-2 rounded"
-                  onClick={() => handleUninstall(app.id, app.title)}
-                >
-                  Uninstall
-                </button>
               </div>
+
+              <button
+                className="bg-green-500 text-white px-4 py-2 rounded mt-4 sm:mt-0"
+                onClick={() => handleUninstall(app.id, app.title)} >
+                Uninstall
+              </button>
+            </div>
+
             ))}
           </div>
         )}
