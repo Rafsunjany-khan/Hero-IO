@@ -4,6 +4,9 @@ import { useParams, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const AppDetails = () => {
   const { id } = useParams();
@@ -24,6 +27,18 @@ const AppDetails = () => {
         setLoading(false);
       });
   }, [id]);
+
+        const handleInstall = () => {
+                setInstalled(true);
+                toast.success(`${app.title} Installed Successfully!`, {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                });
+              };
 
           if (loading) {
           return <div className="text-center py-20">Loading...</div>;
@@ -58,8 +73,16 @@ const AppDetails = () => {
             <span><img src="/assets/icon-ratings.png"/> Average Rating <br />{app.ratingAvg.toFixed(1)}</span>
             <span> <img src="/assets/icon-review.png" /> Total Reviews <br />{app.reviews.toLocaleString()}</span>
           </div>
-          <button className="flex items-center space-x-2 bg-green-400 text-white mt-6 px-6 py-3 rounded-md">
-        Install Now (291 MB)</button>
+          <button
+              onClick={handleInstall}
+              disabled={installed}
+              className={`flex items-center justify-center mt-6 px-6 py-3 rounded-md font-medium transition ${
+                installed
+                  ? "bg-gray-400 cursor-not-allowed text-white"
+                  : "bg-green-400 text-white hover:bg-green-500"
+              }`} >
+              {installed ? "Installed" : `Install Now (${app.size} MB)`}
+            </button>
         </div>
       </div>
 
@@ -99,16 +122,39 @@ const AppDetails = () => {
 
 
       <div className="mt-12">
-      <h2 className="font-bold text-xl mb-4">Description</h2>
-      <p>This is a simple apps for using best feature, This is a simple apps for using best feature
-      This is a simple apps for using best feature, This is a simple apps for using best feature
-      This is a simple apps for using best feature, This is a simple apps for using best feature
-      This is a simple apps for using best feature, This is a simple apps for using best feature
-      This is a simple apps for using best feature, This is a simple apps for using best feature
-       This is a simple apps for using best feature, This is a simple apps for using best feature</p>
-      </div>
+          <h2 className="font-bold text-xl mb-4">Description</h2>
+
+          <p className="mb-4">
+            This app is designed to simplify your daily tasks and increase productivity.
+            With a clean and intuitive interface, users can easily manage lists, schedules, and reminders.
+            It supports cross-device synchronization, so you can access your tasks anywhere.
+            The app is lightweight, fast, and optimized for both mobile and desktop platforms.
+            It provides essential features without unnecessary clutter, making it user-friendly.
+            Whether you’re planning work projects or personal goals, it adapts to your needs.
+          </p>
+
+          <p className="mb-4">
+            You can create multiple lists, add tasks with due dates, and set priority levels.
+            It includes reminders, notifications, and recurring task options for better management.
+            The app also supports collaborative features to share tasks with friends or colleagues.
+            Smart sorting and filtering allow you to focus on high-priority tasks efficiently.
+            Offline support ensures you can continue working even without internet access.
+            Customization options like themes, colors, and labels make organizing enjoyable.
+          </p>
+
+          <p className="mb-4">
+            Using this app improves your time management and reduces stress from missed tasks.
+            Its analytics show your progress, helping you identify productive habits.
+            Regular updates ensure stability, security, and introduce new helpful features.
+            The app integrates with other tools like calendars, email, and cloud storage.
+            Customer support is quick and responsive, assisting with any issues or queries.
+            Overall, it’s a reliable companion for organizing daily life, increasing efficiency, and achieving goals.
+          </p>
+        </div>
+
     </div>
       <Footer />
+            <ToastContainer />
     </div>
   );
 };
